@@ -2,11 +2,13 @@ angular
   .module('searchBarSubMenu', [])
   .component('searchBarSubMenu', {
     controller: function(searchBarSubMenuItems, $filter) {
-      this.$onInit = () => {
+      const ctrl = this;
+
+      ctrl.$onInit = () => {
         this.items = searchBarSubMenuItems;
       };
-      this.goToUrl = (url) => { window.open(url, '_blank'); };
-      this.translate = (original) => {
+      ctrl.goToUrl = (url) => { window.open(url, '_blank'); };
+      ctrl.translate = (original) => {
           return original.replace(/\{(.+)\}/g, (match, p1) => $filter('translate')(p1));
       };
     },
